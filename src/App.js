@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
-import reduxLogger from 'redux-logger';
+import { PersistGate } from 'redux-persist/integration/react'
 import Stack from './navigation/Stack';
-import createSagaMiddleware from 'redux-saga';
-import rootSaga from './saga/rootSaga';
+import { store, persistor } from './store';
 
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(sagaMiddleware, reduxLogger),
-);
-
-sagaMiddleware.run(rootSaga);
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Stack />
+        <PersistGate loading={null} persistor={persistor}>
+            <Stack />
+        </PersistGate>
       </Provider>
     );
   }

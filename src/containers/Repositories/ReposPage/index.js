@@ -21,7 +21,6 @@ class ReposPage extends Component {
 
   render() {
     const { repos } = this.props;
-    console.log(repos);
     return (
       <View>
         <TouchableOpacity
@@ -38,7 +37,7 @@ class ReposPage extends Component {
 
 const styles = StyleSheet.create({
   link: {
-    color: 'red',
+    color: 'green',
     fontSize: 20,
   },
   field: {
