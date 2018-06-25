@@ -1,10 +1,10 @@
 import { TabNavigator } from 'react-navigation';
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 
 const Tabs = TabNavigator({
   RepoList: {
-    screen: () => <Text>First tab</Text>,
+    screen: () => <ActivityIndicator size="large" color="#0000ff" />,
   },
   Profile: {
     screen: () => <Text>Second tab</Text>,

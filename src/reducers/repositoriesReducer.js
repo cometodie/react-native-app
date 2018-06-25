@@ -6,6 +6,7 @@ import {
 
 const initState = {
   repos: [],
+  loading: false,
 };
 
 export default function reducer(state = initState, action) {

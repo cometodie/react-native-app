@@ -4,14 +4,22 @@ import {
   Text,
   TouchableOpacity,
   View,
-  StyleSheet,
   TextInput,
+  ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 
+import styles from './style';
+
 class ReposPage extends Component {
+  constructor() {
+    super();
+    this.state = { reposName: 'microsoft' };
+  }
   componentDidMount() {
     const { onGetRepos } = this.props;
-    onGetRepos('microsoft');
+    const { reposName } = this.state;
+    onGetRepos(reposName);
   }
 
   changeRepos = user => {
@@ -20,29 +28,30 @@ class ReposPage extends Component {
   };
 
   render() {
-    const { repos } = this.props;
+    const { repos, isLoading } = this.props;
+    const { reposName } = this.state;
     return (
-      <View>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Detail')}
-        >
-          <Text style={styles.link}>Go new screen</Text>
-        </TouchableOpacity>
-        <TextInput onChangeText={this.changeRepos} />
-        <List data={repos} renderItem={this.renderItem} />
-      </View>
+      <ScrollView style={styles.scrollContainer}>
+        <View>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Detail')}
+          >
+            <Text style={styles.link}>Go new screen</Text>
+          </TouchableOpacity>
+          <TextInput onChangeText={this.changeRepos} defaultValue={reposName} />
+          {isLoading ? (
+            <ActivityIndicator
+              style={{ marginTop: 50 }}
+              size="large"
+              color="#0000ff"
+            />
+          ) : (
+            <List data={repos} renderItem={this.renderItem} />
+          )}
+        </View>
+      </ScrollView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  link: {
-    color: 'green',
-    fontSize: 20,
-  },
-  field: {
-    width: 200,
-  },
-});
 
 export default ReposPage;
