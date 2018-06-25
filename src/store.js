@@ -5,9 +5,15 @@ import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 import rootSaga from './saga/rootSaga';
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware, reduxLogger];
+const navigation = createReactNavigationReduxMiddleware(
+  'root',
+  state => state.nav,
+);
+
+const middleware = [sagaMiddleware, reduxLogger, navigation];
 
 export const persistConfig = {
   key: 'root',

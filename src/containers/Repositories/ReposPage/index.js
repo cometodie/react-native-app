@@ -28,14 +28,12 @@ class ReposPage extends Component {
   };
 
   render() {
-    const { repos, isLoading } = this.props;
+    const { repos, onNavigate, isLoading } = this.props;
     const { reposName } = this.state;
     return (
       <ScrollView style={styles.scrollContainer}>
         <View>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Detail')}
-          >
+          <TouchableOpacity onPress={() => onNavigate('Detail')}>
             <Text style={styles.link}>Go new screen</Text>
           </TouchableOpacity>
           <TextInput onChangeText={this.changeRepos} defaultValue={reposName} />
