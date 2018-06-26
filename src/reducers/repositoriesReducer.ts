@@ -2,14 +2,24 @@ import {
   GET_REPOS,
   GET_REPOS_SUCCESS,
   GET_REPOS_FAIL,
+  ReposActions,
 } from '../actions/repositoriesAction';
+import Repository from '../models/Repository';
+
+export interface RepositoryState {
+  repos: Repository[];
+  loading: boolean;
+}
 
 const initState = {
   repos: [],
   loading: false,
 };
 
-export default function reducer(state = initState, action) {
+export default function reducer(
+  state: RepositoryState = initState,
+  action: ReposActions,
+) {
   switch (action.type) {
     case GET_REPOS:
       return { ...state, loading: true };

@@ -10,10 +10,22 @@ import {
 } from 'react-native';
 
 import styles from './style';
+import Repository from '../../../models/Repository';
 
-class ReposPage extends Component {
-  constructor() {
-    super();
+interface Props {
+  repos: Repository[];
+  isLoading: boolean;
+  onGetRepos: (user: string) => void;
+  onNavigate: (routeName: string) => void;
+}
+
+interface State {
+  reposName: string;
+}
+
+class ReposPage extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     this.state = { reposName: 'microsoft' };
   }
   componentDidMount() {
@@ -22,7 +34,7 @@ class ReposPage extends Component {
     onGetRepos(reposName);
   }
 
-  changeRepos = user => {
+  changeRepos = (user: string) => {
     const { onGetRepos } = this.props;
     onGetRepos(user);
   };
@@ -44,7 +56,7 @@ class ReposPage extends Component {
               color="#0000ff"
             />
           ) : (
-            <List data={repos} renderItem={this.renderItem} />
+            <List data={repos} />
           )}
         </View>
       </ScrollView>

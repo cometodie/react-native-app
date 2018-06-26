@@ -1,16 +1,18 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
+import { SagaIterator } from 'redux-saga';
 import axios from 'axios';
 import {
   GET_REPOS,
   GET_REPOS_SUCCESS,
   GET_REPOS_FAIL,
+  GetRepos,
 } from '../actions/repositoriesAction';
 
-export function* watchLoadRepos() {
+export function* watchLoadRepos(): SagaIterator {
   yield takeLatest(GET_REPOS, workerSaga);
 }
 
-function getRepositories(user) {
+function getRepositories(user: string) {
   return axios({
     method: 'GET',
     baseURL: `https://api.github.com/users/${user}/repos`,
@@ -18,7 +20,7 @@ function getRepositories(user) {
   });
 }
 
-function* workerSaga(action) {
+function* workerSaga(action: GetRepos) {
   const { user } = action;
   try {
     const response = yield call(getRepositories, user);
