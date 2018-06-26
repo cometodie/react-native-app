@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, ListRenderItemInfo } from 'react-native';
+import { Text, FlatList, ListRenderItemInfo } from 'react-native';
 import ListItem from '../../../models/ListItem';
 
 interface Props {
@@ -8,9 +8,7 @@ interface Props {
 
 export default class List extends Component<Props> {
   renderItem = ({ item }: ListRenderItemInfo<ListItem>) => (
-    <View>
-      <Text key={item.id}>{item.name}</Text>
-    </View>
+    <Text key={item.id}>{item.name}</Text>
   );
   render() {
     const { data, ...other } = this.props;
