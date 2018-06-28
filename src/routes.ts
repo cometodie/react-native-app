@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-import Repositories from './containers/Repositories';
+import Repositories from 'containers/Repositories';
 import Tabs from './navigation/Tabs';
 
 const AppRouteConfigs = {

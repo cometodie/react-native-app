@@ -1,5 +1,5 @@
 import createObjectAction from './createObjectAction';
-import Repository from '../models/Repository';
+import Repository from 'models/Repository';
 
 export const GET_REPOS = '@/repos/LOAD';
 export const GET_REPOS_SUCCESS = '@/repos/LOAD_SUCCESS';

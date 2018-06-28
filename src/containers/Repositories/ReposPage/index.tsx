@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import List from '../../../components/Elements/List';
+import List from 'components/Elements/List';
+import Repository from 'models/Repository';
 import {
   Text,
   TouchableOpacity,
@@ -7,10 +8,10 @@ import {
   TextInput,
   ScrollView,
   ActivityIndicator,
+  ImageBackground,
 } from 'react-native';
 
 import styles from './style';
-import Repository from '../../../models/Repository';
 
 interface Props {
   repos: Repository[];
@@ -44,6 +45,20 @@ class ReposPage extends Component<Props, State> {
     const { reposName } = this.state;
     return (
       <ScrollView style={styles.scrollContainer}>
+        <ImageBackground
+          source={require('./images/github.png')}
+          resizeMode="contain"
+          style={{
+            flex: 1,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            opacity: 0.2,
+            position: 'absolute',
+          }}
+        />
+
         <View>
           <TouchableOpacity onPress={() => onNavigate('Detail')}>
             <Text style={styles.link}>Go new screen</Text>

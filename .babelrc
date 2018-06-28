@@ -5,7 +5,10 @@
       "module-alias",
       [
         { "src": "./src", "expose": "src" },
-        { "src": "./src/components", "expose": "components" }
+        { "src": "./src/actions", "expose": "actions" },
+        { "src": "./src/components", "expose": "components" },
+        { "src": "./src/containers", "expose": "containers" },
+        { "src": "./src/models", "expose": "models" }
       ]
     ]
   ]

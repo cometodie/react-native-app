@@ -3,8 +3,8 @@ import {
   GET_REPOS_SUCCESS,
   GET_REPOS_FAIL,
   ReposActions,
-} from '../actions/repositoriesAction';
-import Repository from '../models/Repository';
+} from 'actions/repositoriesAction';
+import Repository from 'models/Repository';
 
 export interface RepositoryState {
   repos: Repository[];
